@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Daftar Parfum</title>
+  <style>
+    body { font-family: Arial, sans-serif; padding: 20px; }
+    .card {
+      border: 1px solid #ddd;
+      border-radius: 10px;
+      padding: 15px;
+      margin: 10px 0;
+      box-shadow: 2px 2px 8px rgba(0,0,0,0.1);
+    }
+    .nama { font-size: 20px; font-weight: bold; }
+    .harga { color: green; font-weight: bold; }
+  </style>
+</head>
+<body>
+  <h1>Daftar Parfum</h1>
+  <div id="list"></div>
+
+  <script>
+    // Ambil data dari API kamu
+    fetch("http://localhost:5000/api/parfum")
+      .then(res => res.json())
+      .then(data => {
+        const list = document.getElementById("list");
+        data.forEach(item => {
+          list.innerHTML += `
+            <div class="card">
+              <div class="nama">${item.nama}</div>
+              <div>Gender: ${item.gender}</div>
+              <div>Aroma: ${item.aroma}</div>
+              <div class="harga">Rp ${item.harga.toLocaleString()}</div>
+            </div>
+          `;
+        });
+      })
+      .catch(err => console.error(err));
+  </script>
+</body>
+</html>
