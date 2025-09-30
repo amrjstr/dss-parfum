@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <title>Rekomendasi Parfum</title>
+  <style>
+    body { font-family: Arial, sans-serif; background: #f4f4f9; padding: 20px; }
+    table { width: 100%; border-collapse: collapse; margin-top: 20px; }
+    th, td { border: 1px solid #ccc; padding: 10px; text-align: center; }
+    th { background: purple; color: white; }
+  </style>
+</head>
+<body>
+  <h1>Rekomendasi Parfum ✨</h1>
+
+  <label>Gender: 
+    <select id="gender">
+      <option value="">Pilih Gender</option>
+      <option value="Pria">Pria</option>
+      <option value="Wanita">Wanita</option>
+      <option value="Unisex">Unisex</option>
+    </select>
+  </label>
+
+  <label>Aroma: 
+    <select id="aroma">
+      <option value="">Pilih Aroma</option>
+      <option value="Floral">Floral</option>
+      <option value="Woody">Woody</option>
+      <option value="Sweet">Sweet</option>
+    </select>
+  </label>
+
+  <label>Budget (Rp): 
+    <input type="number" id="budget">
+  </label>
+
+  <button onclick="cariParfum()">Cari</button>
+
+  <div id="hasil"></div>
+
+  <script>
+    const dataParfum = [
+      { nama: "Lavender", gender: "Wanita", aroma: "Floral", harga: 150000 },
+      { nama: "Oud Kiswah", gender: "Pria", aroma: "Woody", harga: 300000 },
+      { nama: "Misk Turki", gender: "Unisex", aroma: "Sweet", harga: 250000 },
+    ];
+
+    function cariParfum() {
+      const gender = document.getElementById("gender").value;
+      const aroma = document.getElementById("aroma").value;
+      const budget = Number(document.getElementById("budget").value);
+
+      const filter = dataParfum.filter(p =>
+        (gender === "" || p.gender === gender) &&
+        (aroma === "" || p.aroma === aroma) &&
+        (budget === 0 || p.harga <= budget)
+      );
+
+      let html = "";
+      if (filter.length > 0) {
+        html += "<table><thead><tr><th>Nama</th><th>Gender</th><th>Aroma</th><th>Harga</th></tr></thead><tbody>";
+        filter.forEach(p => {
+          html += `<tr>
+            <td>${p.nama}</td>
+            <td>${p.gender}</td>
+            <td>${p.aroma}</td>
+            <td>Rp ${p.harga.toLocaleString()}</td>
+          </tr>`;
+        });
+        html += "</tbody></table>";
+      } else {
+        html = "<p>Tidak ada hasil ditemukan.</p>";
+      }
+
+      document.getElementById("hasil").innerHTML = html;
+    }
+  </script>
+</body>
+</html>
