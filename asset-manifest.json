@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/dss-parfum/static/css/main.a2492c0c.css",
+    "main.js": "/dss-parfum/static/js/main.e6bd7493.js",
+    "static/js/453.670e15c7.chunk.js": "/dss-parfum/static/js/453.670e15c7.chunk.js",
+    "index.html": "/dss-parfum/index.html",
+    "main.a2492c0c.css.map": "/dss-parfum/static/css/main.a2492c0c.css.map",
+    "main.e6bd7493.js.map": "/dss-parfum/static/js/main.e6bd7493.js.map",
+    "453.670e15c7.chunk.js.map": "/dss-parfum/static/js/453.670e15c7.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.a2492c0c.css",
+    "static/js/main.e6bd7493.js"
+  ]
+}
